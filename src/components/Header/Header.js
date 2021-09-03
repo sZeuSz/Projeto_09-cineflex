@@ -3,8 +3,8 @@ import './Header.css'
 export default function Header () {
 
     return (
-        <header>
-            
+        <header className="header centralize-items-h">
+            <h1> CINEFLEX </h1>
         </header>
     )
 }
