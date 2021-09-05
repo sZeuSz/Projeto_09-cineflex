@@ -1,0 +1,56 @@
+.day-date-and-time {
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    color: #293845;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.time {
+    width: 83px;
+    height: 43px;
+    background: none;
+    background-color: #E8833A;
+    border: none;   
+    border-radius: 3px;
+    margin: 12px 0px 5px 0px;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+}
+.schedules{
+    width: 175px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+footer {
+    margin-top: 100px;
+}
+
+figure{
+    position: fixed;
+    height: 72px;
+    width: 100%;
+    bottom: 0;
+    background-color: #DFE6ED;
+    display: flex;
+    align-items: center;
+}
+
+figure img {
+    width: 48px;
+    height: 100%;
+}
+
+figure figcaption {
+    font-size: 26px;
+    font-weight: 400;
+    font-style: normal;
+    margin-left: 10px;
+    color: #293845;
+}

@@ -1,0 +1,60 @@
+.seats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+}
+.seat {
+    /* border: none; */
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #C3CFD9;
+    border: 1px solid #808F9D;
+    margin: 10px 3px;
+}
+
+.selecionado {
+    background-color: #8DD7CF;
+    border-color: #45BDB0;
+}
+
+.indisponivel {
+    background-color: #FBE192;
+    border-color: #F7C52B;
+}
+
+.states {
+    display:flex;
+    justify-content: space-around;
+}
+.info-states{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.forms {
+    margin-left: 10px;
+}
+.forms h2{
+    margin: 25px 0px 0px 0px;
+    justify-content: flex-start;
+}
+
+input {
+    width: 327px;
+    height: 51px;
+    margin-top: 0px;
+}
+input:focus{
+    outline: 0;
+}
+input::placeholder {
+    font-size: 18px;
+    font-weight: 400;
+    font-style: italic;
+    padding-left: 15px;
+    color: #AFAFAF;
+}
