@@ -5,8 +5,8 @@ import Loading from '../Loading/Loading';
 import './Sucess.css'
 export default function Sucess ({nome, cpf, movie, selectedSeats, movieDayInfo}) {
     
-    const [sucess, setSucess] = useState("");
-    useEffect( () => {
+    const [sucess, setSucess] = useState("d");
+    /*useEffect( () => {
 
     const promise = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/seats/book-many`, {"ids":selectedSeats.map((seat) => seat.id), "name":nome, "cpf":cpf});
 
@@ -17,8 +17,10 @@ export default function Sucess ({nome, cpf, movie, selectedSeats, movieDayInfo})
             alert("Erro no servidor, sorry");
             setSucess("bad");
         })
-    }, [])
+    }, [])*/
 
+    console.log(selectedSeats)
+    
     if(sucess === ""){
 
         return (

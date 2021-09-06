@@ -90,3 +90,8 @@ input::placeholder {
     padding-left: 15px;
     color: #AFAFAF;
 }
+
+
+.pointer {
+    pointer-events: none;
+}

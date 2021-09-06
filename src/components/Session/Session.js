@@ -8,7 +8,7 @@ import "./Session.css"
 export default function Session ({setNome, setCpf, selectedSeats, setSelectedSeats}) {
 
     const [seats, setSeats] = useState(null);
-    const {idSessao} = useParams();
+    const {idSessao} = useParams(); 
 
     useEffect ( () => {
 
@@ -53,7 +53,7 @@ export default function Session ({setNome, setCpf, selectedSeats, setSelectedSea
             </div>
             <Link className="link" to="/sucesso">
                 <div className="centralize-items-h">
-                        <button className="reserve-seat">Reservar Acento</button>
+                    <button className="reserve-seat">Reservar Acento</button>
                 </div>
             </Link>
             <footer>
@@ -86,7 +86,7 @@ function SelectableButton ({seat, selectedSeats, setSelectedSeats}) {
         }
         else {
           setSelected("");
-          setSelectedSeats(selectedSeats.filter((seatId) => seatId !== name))
+          setSelectedSeats(selectedSeats.filter((seatId) => seatId.id !== id))
         }
     }
 
