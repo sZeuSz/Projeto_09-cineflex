@@ -14,14 +14,14 @@
 
 .info-movie-buyer {
     margin-left: 25px;
-    line-height: 20px;
+    line-height: 25px;
 }
 .info-movie-buyer h6 {
     font-size: 22px;
     font-weight: 700;
     font-style: normal;
     color: #293845;
-    margin: 8px 0px;
+    margin: 30px 0px;
 }
 
 .info-movie-buyer p {
@@ -30,4 +30,8 @@
     font-style: normal;
     color: #293845;
     margin: 5px 0px;
+}
+
+.back-home-button{
+    margin: 20px;
 }

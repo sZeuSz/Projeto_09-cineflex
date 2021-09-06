@@ -1,21 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "./Movie.css";
+import Loading from "../Loading/Loading";
 
-export default function Movie ({movie, setMovie}) {
+export default function Movie ({movie, setMovie, setMovieDayInfo, movieDayInfo}) {
     
     const {idFilme} = useParams();
-    console.log(idFilme);
+    
     useEffect(() => {
 
         const promise = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies/${idFilme}/showtimes`);
 
         promise.then( (response) => {
-            console.log(response.data);
             setMovie(response.data);
         })
     }, [])
+
+    if(movie === null){
+        return (
+            <Loading />
+        )
+    }
 
     return (
         <main className="container ">
@@ -29,7 +35,7 @@ export default function Movie ({movie, setMovie}) {
                                 {day.weekday} - {day.date}
                             </h3>
                             <div className="schedules">
-                                <Showtime showtimes={day.showtimes}/>
+                                <Showtime weekday={day.weekday} date={day.date} showtimes={day.showtimes} setMovieDayInfo={setMovieDayInfo} movieDayInfo={movieDayInfo}/>
                             </div>
                         </div>
                     )
@@ -47,14 +53,13 @@ export default function Movie ({movie, setMovie}) {
     )
 }
 
-function Showtime ({showtimes}) {
+function Showtime ({showtimes, weekday, date, setMovieDayInfo, movieDayInfo}) {
 
-    console.log(showtimes);
     return (
         <>
           {showtimes.map((showtime) => {
              return (
-                <Link to={`/sessao/${showtime.id}`}>
+                <Link to={`/sessao/${showtime.id}`} onClick={() => setMovieDayInfo({weekday, date, "hour": showtime.name})}>
                     <button className="time" id={showtime.id}>{showtime.name}</button>
                 </Link>
              )

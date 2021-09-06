@@ -1,15 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom";
+import Loading from "../Loading/Loading";
 import "./Session.css"
 
 
-export default function Session () {
+export default function Session ({setNome, setCpf, selectedSeats, setSelectedSeats}) {
 
     const [seats, setSeats] = useState(null);
-    const [nome, setNome] = useState("");
-    const [cpf, setCpf] = useState("");
-    const [selectedSeats, setSelectedSeats] = useState([]);
     const {idSessao} = useParams();
 
     useEffect ( () => {
@@ -17,11 +15,16 @@ export default function Session () {
         const promise = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/showtimes/${idSessao}/seats`);
 
         promise.then((response) => {
-            console.log(response.data)
+
             setSeats(response.data)
         })
     }, []) 
 
+    if(seats === null){
+        return (
+            <Loading />
+        )
+    }
     return (
         <main className="container ">
             <h2 className="centralize-items-h">Selecione o(s) assento(s)</h2>
@@ -47,10 +50,8 @@ export default function Session () {
                 <input placeholder="Digite seu nome..." onChange={e => setNome(e.target.value)}></input>
                 <h2 className="centralize-items-h">CPF do comprador:</h2>
                 <input placeholder="Digite seu CPF..." onChange={e => setCpf(e.target.value)}></input>
-
-                {/* <button onClick={() => imprime(selectedSeats)}>clica ni mim</button> */}
             </div>
-            <Link to="/sucesso">
+            <Link className="link" to="/sucesso">
                 <div className="centralize-items-h">
                         <button className="reserve-seat">Reservar Acento</button>
                 </div>
@@ -70,31 +71,26 @@ export default function Session () {
         </main>
     )
 }
-function imprime (selectedSeats){
-    console.log(selectedSeats)
-}
-
 function SelectableButton ({seat, selectedSeats, setSelectedSeats}) {
 
     const [selected, setSelected] = useState("");
 
-    function select(isAvailable, id) {
+    function select(isAvailable, id, name) {
         
         if(!isAvailable){
             alert("Esse assento não está disponível");
         }
         else if (selected === "") {
-          console.log("auqi")
-          setSelectedSeats([...selectedSeats, id]);
+          setSelectedSeats([...selectedSeats, {id, name}]);
           setSelected("selected");
         }
         else {
           setSelected("");
-          setSelectedSeats(selectedSeats.filter((seatId) => seatId !== id))
+          setSelectedSeats(selectedSeats.filter((seatId) => seatId !== name))
         }
     }
 
     return (
-        <button className={`seat ${seat.isAvailable === false ? "unavailable" : selected}`} onClick={() => select(seat.isAvailable,seat.id)}>{seat.name}</button>
+        <button className={`seat ${seat.isAvailable === false ? "unavailable" : selected}`} onClick={() => select(seat.isAvailable,seat.id, seat.name)}>{seat.name}</button>
     )
 }
