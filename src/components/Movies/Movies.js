@@ -24,9 +24,9 @@ export default function Movies () {
 
     return (
         <div className="movies">
-            {movies.map((movie) => (
+            {movies.map((movie, index) => (
                 <Link to={`/filme/${movie.id}`}>
-                    <div className="movie" key={movie.id}>
+                    <div className="movie" key={index}>
                         <img src={movie.posterURL} alt="movie" />
                     </div>
                 </Link>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./Session.css"
 
 
@@ -26,7 +26,7 @@ export default function Session () {
         <main className="container ">
             <h2 className="centralize-items-h">Selecione o(s) assento(s)</h2>
             <section className="seats">
-                {seats === null ? "" : seats.seats.map((seat, index) => {return <Button key={index} seat={seat} setSelectedSeats={setSelectedSeats} selectedSeats={selectedSeats} />})}
+                {seats === null ? "" : seats.seats.map((seat, index) => {return <SelectableButton key={index} seat={seat} setSelectedSeats={setSelectedSeats} selectedSeats={selectedSeats} />})}
             </section>
             <div className="states">
                 <div className="info-states">
@@ -48,10 +48,13 @@ export default function Session () {
                 <h2 className="centralize-items-h">CPF do comprador:</h2>
                 <input placeholder="Digite seu CPF..." onChange={e => setCpf(e.target.value)}></input>
 
-                <button onClick={() => imprime(selectedSeats)}>clica ni mim</button>
+                {/* <button onClick={() => imprime(selectedSeats)}>clica ni mim</button> */}
             </div>
-            {nome}  
-            {cpf}
+            <Link to="/sucesso">
+                <div className="centralize-items-h">
+                        <button className="reserve-seat">Reservar Acento</button>
+                </div>
+            </Link>
             <footer>
                 <figure className="image">
                     <div className="background-img centralize-items-h">
@@ -71,7 +74,7 @@ function imprime (selectedSeats){
     console.log(selectedSeats)
 }
 
-function Button ({seat, selectedSeats, setSelectedSeats}) {
+function SelectableButton ({seat, selectedSeats, setSelectedSeats}) {
 
     const [selected, setSelected] = useState("");
 

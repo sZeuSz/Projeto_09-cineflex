@@ -12,7 +12,3 @@ export default function Home () {
         </main>
     );
 }
-
-function Movie () {
-
-}

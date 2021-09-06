@@ -3,9 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "./Movie.css";
 
-export default function Movie () {
-
-    const [movie, setMovie] = useState(null);
+export default function Movie ({movie, setMovie}) {
+    
     const {idFilme} = useParams();
     console.log(idFilme);
     useEffect(() => {
@@ -22,10 +21,10 @@ export default function Movie () {
         <main className="container ">
             <h2 className="centralize-items-h">Selecione o horário</h2>
             <section className="section">
-                {movie === null ? "" : movie.days.map((day) => {
+                {movie === null ? "" : movie.days.map((day, index) => {
 
                     return (
-                        <div>
+                        <div key={index}>
                             <h3 className="day-date-and-time">
                                 {day.weekday} - {day.date}
                             </h3>
@@ -38,7 +37,9 @@ export default function Movie () {
             </section>
             <footer>
                 <figure className="image">
-                    <img src={movie === null ? "" : movie.posterURL} alt="movie-schedules" />
+                    <div className="background-img centralize-items-h">
+                        <img src={movie === null ? "" : movie.posterURL} alt="movie-schedules" />
+                    </div>
                     <figcaption>{movie === null ? "" : movie.title}</figcaption>
                 </figure>
             </footer>
