@@ -3,11 +3,12 @@ import Header from '../Header/Header';
 import Home from '../Home/Home';
 import Movie from '../Movie/Movie';
 import Sucess from '../Sucess/Sucess';
-import { BrowserRouter, Switch, Route} from 'react-router-dom';
+import { BrowserRouter, Switch, Route, useHistory} from 'react-router-dom';
 import Session from '../Session/Session';
 import { useState } from 'react';
 
 function App() { 
+  const history = useHistory();
   const [movie, setMovie] = useState(null);
   const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");

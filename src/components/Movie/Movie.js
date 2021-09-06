@@ -31,7 +31,7 @@ export default function Movie ({movie, setMovie, setMovieDayInfo, movieDayInfo})
 
                     return (
                         <div key={index}>
-                            <h3 className="day-date-and-time">
+                            <h3 className="day-date-and-time" >
                                 {day.weekday} - {day.date}
                             </h3>
                             <div className="schedules">
@@ -57,9 +57,9 @@ function Showtime ({showtimes, weekday, date, setMovieDayInfo, movieDayInfo}) {
 
     return (
         <>
-          {showtimes.map((showtime) => {
+          {showtimes.map((showtime, index) => {
              return (
-                <Link to={`/sessao/${showtime.id}`} onClick={() => setMovieDayInfo({weekday, date, "hour": showtime.name})}>
+                <Link key={index} to={`/sessao/${showtime.id}`} onClick={() => setMovieDayInfo({weekday, date, "hour": showtime.name})}>
                     <button className="time" id={showtime.id}>{showtime.name}</button>
                 </Link>
              )
